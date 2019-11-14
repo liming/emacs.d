@@ -1,7 +1,7 @@
 (setq user-full-name "Ming Li")
 (setq user-mail-address "liming.dl@gmail.com")
 
-(setq package-list '(solarized-theme magit helm helm-ag json-mode))
+(setq package-list '(solarized-theme flutter dart-mode helm helm-ag json-mode magit))
 
 (setenv "PATH" (concat "/usr/local/bin:/usr/local/go/bin:/usr/bin:/bin" (getenv "PATH")))
 
@@ -12,12 +12,17 @@
         ("melpa" . "https://melpa.org/packages/")))
 (package-initialize)
 
-(unless (package-installed-p 'dart-mode)
-  (package-refresh-contents)
-  (package-install 'dart-mode))
+
 
 (unless package-archive-contents
   (package-refresh-contents))
+
+
+; install the missing packages
+(dolist (package package-list)
+  (unless (package-installed-p package)
+    (package-install package)))
+
 
 (setq tab-width 2
       indent-tabs-mode nil)
@@ -154,7 +159,7 @@
       indent-tabs-mode nil)
 (tool-bar-mode -1)
 (global-linum-mode 1)
-(set-default-font "Monaco-12")
+(set-default-font "Inconsolata-12")
 (global-auto-revert-mode)
 (setq-default indent-tabs-mode nil)
 (setq magic-git-executable "git")
@@ -172,7 +177,7 @@
  '(org-agenda-files (quote ("~/Dropbox/Notes/work.org")))
  '(package-selected-packages
    (quote
-    (csharp-mode dotnet nodejs-repl prettier-js js2-refactor js-comint company-tern tern markdown-mode web-mode exec-path-from-shell go-eldoc go-mode go typescript-mode helm-projectile projectile json-mode lua-mode helm-ag use-package solarized-theme magit helm)))
+    (flutter csharp-mode dotnet nodejs-repl prettier-js js2-refactor js-comint company-tern tern markdown-mode web-mode exec-path-from-shell go-eldoc go-mode go typescript-mode helm-projectile projectile json-mode lua-mode helm-ag use-package solarized-theme magit helm)))
  '(package-selected-packagesx
    (quote
     (helm-projectile projectile json-mode lua-mode helm-ag use-package solarized-theme magit helm))))
