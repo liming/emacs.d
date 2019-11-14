@@ -7,9 +7,14 @@
 
 ;; add MELPA package server
 (require 'package)
+(setq package-archives
+      '(("gnu" . "https://elpa.gnu.org/packages/")
+        ("melpa" . "https://melpa.org/packages/")))
 (package-initialize)
-(add-to-list 'package-archives
-             '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+
+(unless (package-installed-p 'dart-mode)
+  (package-refresh-contents)
+  (package-install 'dart-mode))
 
 (unless package-archive-contents
   (package-refresh-contents))
@@ -155,25 +160,26 @@
 (setq magic-git-executable "git")
 
 (require 'setup-javascript)
+(require 'setup-c)
 
 (custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
-  '(js2-strict-inconsistent-return-warning nil)
-  '(js2-strict-missing-semi-warning nil)
-  '(org-agenda-files (quote ("~/Dropbox/Notes/work.org")))
-  '(package-selected-packages
-     (quote
-       (csharp-mode dotnet nodejs-repl prettier-js js2-refactor js-comint company-tern tern markdown-mode web-mode exec-path-from-shell go-eldoc go-mode go typescript-mode helm-projectile projectile json-mode lua-mode helm-ag use-package solarized-theme magit helm)))
-  '(package-selected-packagesx
-     (quote
-       (helm-projectile projectile json-mode lua-mode helm-ag use-package solarized-theme magit helm))))
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(js2-strict-inconsistent-return-warning nil)
+ '(js2-strict-missing-semi-warning nil)
+ '(org-agenda-files (quote ("~/Dropbox/Notes/work.org")))
+ '(package-selected-packages
+   (quote
+    (csharp-mode dotnet nodejs-repl prettier-js js2-refactor js-comint company-tern tern markdown-mode web-mode exec-path-from-shell go-eldoc go-mode go typescript-mode helm-projectile projectile json-mode lua-mode helm-ag use-package solarized-theme magit helm)))
+ '(package-selected-packagesx
+   (quote
+    (helm-projectile projectile json-mode lua-mode helm-ag use-package solarized-theme magit helm))))
 (custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
-  )
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
 
